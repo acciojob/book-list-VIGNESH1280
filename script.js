@@ -1,41 +1,42 @@
-const inputTitle = document.querySelector('#title');
-const inputAuthor = document.querySelector('#author');
-const inputIsbn = document.querySelector('#isbn');
-const addBtn = document.querySelector('#submit');
-const bookList = document.querySelector('#book-list');
+const titleInput = document.getElementById("title");
+      const authorInput = document.getElementById("author");
+      const isbnInput = document.getElementById("isbn");
+      const submitBtn = document.getElementById("submit");
+      const bookList = document.getElementById("book-list");
 
-// Corrected event listener with proper event type 'click'
-addBtn.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent form submission
-    const inpTitle = inputTitle.value;
-    const inpAuthor = inputAuthor.value;
-    const inpIsbn = inputIsbn.value;
+      submitBtn.addEventListener("click", (event) => {
+        event.preventDefault();
 
-    if (inpTitle === '' || inpAuthor === '' || inpIsbn === '') {
-        alert('Please fill all fields'); // Updated alert message for clarity
-        return;
-    }
+        const title = titleInput.value;
+        const author = authorInput.value;
+        const isbn = isbnInput.value;
 
-    const addRow = document.createElement('tr');
-    addRow.innerHTML = `
-        <td>${inpTitle}</td>
-        <td>${inpAuthor}</td>
-        <td>${inpIsbn}</td>
-        <td><button class="delete">X</button></td>
-    `;
+        if (title === "" || author === "" || isbn === "") {
+          alert("Please fill in all fields");
+          return;
+        }
 
-    bookList.append(addRow); // Append the new row to the book list
+        const row = document.createElement("tr");
 
-    // Clear the input fields after adding
-    inputTitle.value = "";
-    inputAuthor.value = "";
-    inputIsbn.value = "";
-});
+        row.innerHTML = `
+		<td>${title}</td>
+		<td>${author}</td>
+		<td>${isbn}</td>
+		<td><button class="delete">X</button></td>
+	`;
 
-// Corrected event listener for the delete button with proper event type 'click'
-bookList.addEventListener('click', (e) => {
-    if (e.target.classList.contains('delete')) {
-        const row = e.target.closest('tr'); // Find the closest row to the button
-        bookList.removeChild(row); // Remove the row from the table
-    }
-});
+        bookList.appendChild(row);
+
+        titleInput.value = "";
+        authorInput.value = "";
+        isbnInput.value = "";
+
+        bookList.addEventListener("click", (e) => {
+          if (e.target.classList.contains("delete")) {
+            if (confirm("Are you sure you want to remove this book?")) {
+              const row = e.target.parentElement.parentElement;
+              bookList.removeChild(row);
+            }
+          }
+        });
+      });

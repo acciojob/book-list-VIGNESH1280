@@ -7,26 +7,26 @@
 <body>
 	    <script type="text/javascript" src="./script.js">
 </script>
-    <h1>My Book List</h1>
+       <h1>My<span>Book</span>List</h1>
+
     <div class="form-group">
-        <input id="title" placeholder="Book Title"> <!-- Placeholder for clarity -->
-        <input id="author" placeholder="Author Name"> <!-- Placeholder for clarity -->
-        <input id="isbn" placeholder="ISBN"> <!-- Placeholder for clarity -->
-        <button id="submit" type="submit">Add Book List</button>
+      <input type="text" id="title" placeholder="Title" />
+      <input type="text" id="author" placeholder="Author" />
+      <input type="text" id="isbn" placeholder="ISBN#" />
+      <button id="submit">Add Book</button>
     </div>
 
     <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>ISBN#</th>
-                <th>Action</th> <!-- Added a header for clarity -->
-            </tr>
-        </thead>
-        <tbody id="book-list"></tbody> <!-- This is where rows will be added -->
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>ISBN#</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="book-list"></tbody>
     </table>
 
-    <script src="./script.js"></script>
 </body>
 </html>
